@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/addprofile','ProfileController@index')->name('profile.add');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
