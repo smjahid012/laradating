@@ -62,6 +62,7 @@
                    </div>
                </div>
            </form>
+
            <img class="mfp-close" src="img/close-btn.png" alt="">
         </div>
 
@@ -190,7 +191,7 @@
                                 <li><a href="stories.html">Stories</a></li>
                                 <li><a href="why-us.html">Why us</a></li>
                                 <li><a href="404.html">Error</a></li>
-                                <li><a href="{{ route('logout') }}" method="POST">Logout</a></li>
+                                
                             </ul>
                         </li>
                         <li><a href="contact.html">Contact us</a></li>
@@ -199,7 +200,7 @@
                         <li><a class="popup-with-zoom-anim" href="#small-dialog"><i class="mdi mdi-key-variant"></i>Login</a></li>
                         <li><a href="#register_form" class="popup-with-zoom-anim"><i class="fa fa-user-plus"></i>Registration</a></li>
 
-                        <li>
+                        {{-- <li>
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                   document.getElementById('logout-form').submit();">
@@ -210,7 +211,7 @@
                                     style="display: none;">
                                     @csrf
                                 </form>
-                        </li>
+                        </li> --}}
 
                         <li class="flag_drop">
                             <div class="selector">
