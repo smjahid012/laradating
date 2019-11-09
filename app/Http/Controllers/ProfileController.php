@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -14,10 +15,21 @@ class ProfileController extends Controller
      */
     public function addprofile(Request $request)
     {
+        //This logic will stop user to go back on profile section
+        //Checking If Dating Profile exist & under review
+        // $chekcingUserProfile = Profile::where(['id' =>Auth::user()['id'], 'status'=>0])->count();
+        // if($chekcingUserProfile>0){
+        //     return redirect('/reviewprofile');
+        // }
+
+
+        //  echo "<pre>";
+        //  print_r(Auth::User());
+        //  die;
+
         if($request->isMethod('post')){
             //profiles is table name
             $data = $request->all();
-
             $profile = new profile;
             $profile->email = $data['email'];
             $profile->gender = $data['gender'];
@@ -27,26 +39,29 @@ class ProfileController extends Controller
             $profile->dob = $data['dob'];
             $profile->mybio = $data['mybio'];
             $profile->myinterest = $data['myinterest'];
+
             $profile->save();
 
+            //Redirect Users To Review Page after saving form
+            return redirect('/reviewprofile');
 
             //  echo "<pre>";
             //  print_r($data);
             //  die;
-        }
 
+        }
 
         return view('frontView.pages.addprofile_content');
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the message for review a new profile.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function reviewprofile()
     {
-        //
+        return view('frontView.pages.review_content');
     }
 
     /**

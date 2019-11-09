@@ -7,6 +7,7 @@
 
 @yield('userregister')
 @yield('addprofile')
+@yield('profilereview')
 
 
 @include('frontView.inc.footer')

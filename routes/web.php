@@ -14,6 +14,7 @@
 
 
 Route::any('/addprofile','ProfileController@addprofile')->name('profile.add');
+Route::get('/reviewprofile','ProfileController@reviewprofile')->name('profile.review');
 
 Auth::routes();
 

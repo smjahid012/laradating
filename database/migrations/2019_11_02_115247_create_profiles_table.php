@@ -23,6 +23,8 @@ class CreateProfilesTable extends Migration
             $table->string('dob');
             $table->text('mybio');
             $table->text('myinterest');
+            $table->tinyInteger('status');
+            //$table->enum('status', ['inactive', 'active']);
             $table->timestamps();
         });
     }
