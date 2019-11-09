@@ -13,11 +13,16 @@
 
 
 
-Route::get('/addprofile','ProfileController@index')->name('profile.add');
+Route::any('/addprofile','ProfileController@addprofile')->name('profile.add');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    return "Cache is cleared";
+});
 
 
 Route::group(['prefix' => 'admin'], function () {
