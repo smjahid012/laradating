@@ -17,20 +17,16 @@ class ProfileController extends Controller
     {
         //This logic will stop user to go back on profile section
         //Checking If Dating Profile exist & under review
-        // $chekcingUserProfile = Profile::where(['id' =>Auth::user()['id'], 'status'=>0])->count();
-        // if($chekcingUserProfile>0){
-        //     return redirect('/reviewprofile');
-        // }
-
-
-        //  echo "<pre>";
-        //  print_r(Auth::User());
-        //  die;
+        $chekcingUserProfile = Profile::where(['users_id' => Auth::user()->id, 'status'=>0])->count();
+        if($chekcingUserProfile>0){
+            return redirect('/reviewprofile');
+        }
 
         if($request->isMethod('post')){
             //profiles is table name
             $data = $request->all();
             $profile = new profile;
+            $profile->users_id = Auth::user()->id;
             $profile->email = $data['email'];
             $profile->gender = $data['gender'];
             $profile->height = $data['height'];
@@ -39,18 +35,17 @@ class ProfileController extends Controller
             $profile->dob = $data['dob'];
             $profile->mybio = $data['mybio'];
             $profile->myinterest = $data['myinterest'];
-
             $profile->save();
+
+            // echo "<pre>";
+            // print_r($data);
+            // print_r(Auth::User());
+            // print_r(Auth::user()->id);
+            // die;
 
             //Redirect Users To Review Page after saving form
             return redirect('/reviewprofile');
-
-            //  echo "<pre>";
-            //  print_r($data);
-            //  die;
-
         }
-
         return view('frontView.pages.addprofile_content');
     }
 

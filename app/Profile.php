@@ -8,3 +8,5 @@ class Profile extends Model
 {
     protected $fillable = ['email'];
 }
+
+
