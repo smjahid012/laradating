@@ -51,7 +51,7 @@
                 </li>
                 <li data-index="rs-1597" data-slotamount="7" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="600" data-rotate="0" data-saveperformance="off">
                     <!-- MAIN IMAGE -->
-                    <img src="img/slider-img/slider-1.jpg"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+                    <img src="{{ asset('img/slider-img/slider-1.jpg') }}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
                     <!-- LAYERS -->
                     <div class="tp-caption first_text"
                         data-width="none"
@@ -143,28 +143,28 @@
         <div class="row">
             <div class="col-md-3 col-xs-6">
                 <div class="welcome_item">
-                    <img src="img/welcome-icon/w-icon-1.png" alt="">
+                    <img src="{{ asset('img/welcome-icon/w-icon-1.png') }}" alt="">
                     <h4 class="counter">1611</h4>
                     <h6>Total Members</h6>
                 </div>
             </div>
             <div class="col-md-3 col-xs-6">
                 <div class="welcome_item">
-                    <img src="img/welcome-icon/w-icon-2.png" alt="">
+                    <img src="{{ asset('img/welcome-icon/w-icon-2.png') }}" alt="">
                     <h4 class="counter">500</h4>
                     <h6>Members online</h6>
                 </div>
             </div>
             <div class="col-md-3 col-xs-6">
                 <div class="welcome_item">
-                    <img src="img/welcome-icon/w-icon-3.png" alt="">
+                    <img src="{{ asset('img/welcome-icon/w-icon-3.png') }}" alt="">
                     <h4 class="counter">300</h4>
                     <h6>Men online</h6>
                 </div>
             </div>
             <div class="col-md-3 col-xs-6">
                 <div class="welcome_item">
-                    <img src="img/welcome-icon/w-icon-4.png" alt="">
+                    <img src="{{ asset('img/welcome-icon/w-icon-4.png') }}" alt="">
                     <h4 class="counter">200</h4>
                     <h6>Women online</h6>
                 </div>
@@ -229,16 +229,16 @@
                     <div class="col-md-5">
                         <div class="download_moblie">
                             <div class="download_m_slider">
-                                <img src="img/mobile-slider/mobile-1.png" alt="">
+                                <img src="{{ asset('img/mobile-slider/mobile-1.png') }}" alt="">
                                 <div class="download_moblile_slider">
                                     <div class="item">
-                                        <img src="img/mobile-slider/screen-1.png" alt="">
+                                        <img src="{{ asset('img/mobile-slider/screen-1.png') }}" alt="">
                                     </div>
                                     <div class="item">
-                                        <img src="img/mobile-slider/screen-1.png" alt="">
+                                        <img src="{{ asset('img/mobile-slider/screen-1.png') }}" alt="">
                                     </div>
                                     <div class="item">
-                                        <img src="img/mobile-slider/screen-1.png" alt="">
+                                        <img src="{{ asset('img/mobile-slider/screen-1.png') }}" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -256,26 +256,26 @@
     <div class="container">
         <div class="welcome_title">
             <h3>Step to Find Your Soul mate</h3>
-            <img src="img/w-title-b.png" alt="">
+            <img src="{{ asset('img/w-title-b.png') }}" alt="">
         </div>
         <div class="row">
             <div class="col-md-4">
                 <div class="find_soul_item">
-                    <img src="img/soul-icon/soul-1.png" alt="">
+                    <img src="{{ asset('img/soul-icon/soul-1.png') }}" alt="">
                     <h4>Create a profile</h4>
                     <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="find_soul_item">
-                    <img src="img/soul-icon/soul-2.png" alt="">
+                    <img src="{{ asset('img/soul-icon/soul-2.png') }}" alt="">
                     <h4>Find matches </h4>
                     <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="find_soul_item">
-                    <img src="img/soul-icon/soul-3.png" alt="">
+                    <img src="{{ asset('img/soul-icon/soul-3.png') }}" alt="">
                     <h4>Start Dating</h4>
                     <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
                 </div>

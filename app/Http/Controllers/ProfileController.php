@@ -11,6 +11,7 @@ class ProfileController extends Controller
     /**
      * Display Adding Profile Form Request.
      *
+     *@param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function addprofile(Request $request)
@@ -31,7 +32,7 @@ class ProfileController extends Controller
             $profile->gender = $data['gender'];
             $profile->height = $data['height'];
             // $profile->country = $data['country'];
-            // $profile->language = $data['language'];
+        // $profile->language = $data['language'];
             $profile->dob = $data['dob'];
             $profile->mybio = $data['mybio'];
             $profile->myinterest = $data['myinterest'];
@@ -59,6 +60,18 @@ class ProfileController extends Controller
         return view('frontView.pages.review_content');
     }
 
+
+    /**
+     * For Showing All Member In Member Page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function memberprofile()
+    {
+        $memberall = Profile::all();
+        return view('frontView.pages.member_all')->with('memberall', $memberall);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -71,14 +84,23 @@ class ProfileController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified single member page resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        $memberdetail = Profile::where(['users_id' => Auth::user()->id, 'status'=>1])->count();
+        if($memberdetail>1){
+            return redirect('/singlemembershow');
+        }
+        //   echo "<pre>";
+        //      print_r($memberdetail);
+        //      die;
+
+        $singleprofile = Profile::where('id', $id)->first();
+        return view('frontView.pages.member_details')->with('singleprofile', $singleprofile);
     }
 
     /**

@@ -9,5 +9,8 @@
 @yield('addprofile')
 @yield('profilereview')
 
+@yield('membercontent')
+@yield('singlemembercontent')
+
 
 @include('frontView.inc.footer')
