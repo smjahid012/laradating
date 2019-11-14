@@ -11,7 +11,9 @@
 |
 */
 
+Auth::routes();
 
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::any('/addprofile','ProfileController@addprofile')->name('profile.add');
 Route::get('/reviewprofile','ProfileController@reviewprofile')->name('profile.review');
@@ -19,9 +21,6 @@ Route::get('/reviewprofile','ProfileController@reviewprofile')->name('profile.re
 Route::get('/memberprofile','ProfileController@memberprofile')->name('profile.member');
 Route::get('/singlemembershow/{id}','ProfileController@show')->name('profile.show');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');

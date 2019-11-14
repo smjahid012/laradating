@@ -91,16 +91,10 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        $memberdetail = Profile::where(['users_id' => Auth::user()->id, 'status'=>1])->count();
-        if($memberdetail>1){
-            return redirect('/singlemembershow');
-        }
-        //   echo "<pre>";
-        //      print_r($memberdetail);
-        //      die;
 
-        $singleprofile = Profile::where('id', $id)->first();
+        $singleprofile = Profile::where('users_id', $id)->first();
         return view('frontView.pages.member_details')->with('singleprofile', $singleprofile);
+
     }
 
     /**

@@ -19,7 +19,7 @@
 
                             <div class="registration_form_s">
 
-                                <h4>Registration</h4>
+                                <h4>Registration Main</h4>
 
                                     <form method="POST" action="{{ route('register') }}">
                                         @csrf

@@ -46,7 +46,7 @@
         <![endif]-->
     </head>
     <body>
-       <div class="login_form_inner zoom-anim-dialog mfp-hide" id="small-dialog">
+       {{-- <div class="login_form_inner zoom-anim-dialog mfp-hide" id="small-dialog">
            <h4>User Login</h4>
            <form>
                <input type="text" placeholder="Username">
@@ -119,7 +119,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <!--================Frist Main hader Area =================-->
         <header class="header_menu_area">
@@ -162,8 +162,12 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Community</a>
                             <ul class="dropdown-menu">
                                 <li><a href="community.html">Community</a></li>
-                                <li><a href="members.html">Members</a></li>
-                                <li><a href="members-detail.html">Members Details</a></li>
+                                <li><a href="{{ route('profile.member') }}">Members</a></li>
+                                {{-- Without this checking condition it will show error to get property id of non object.
+                                    We are checking here user is logged in or not --}}
+                                @if (Auth::check())
+                                <li><a href="{{ route('profile.show', Auth::user()->id) }}">Members Details</a></li>
+                                @endif
                                 <li><a href="discussions.html">Discussions</a></li>
                                 <li><a href="forums.html">Forums</a></li>
                                 <li><a href="groups.html">Groups</a></li>
