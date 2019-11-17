@@ -19,7 +19,7 @@ class ProfileController extends Controller
         //This logic will stop user to go back on profile section
         //Checking If Dating Profile exist & under review
         $chekcingUserProfile = Profile::where(['users_id' => Auth::user()->id, 'status'=>0])->count();
-        if($chekcingUserProfile>0){
+        if($chekcingUserProfile>0) {
             return redirect('/reviewprofile');
         }
 
@@ -57,6 +57,7 @@ class ProfileController extends Controller
      */
     public function reviewprofile()
     {
+
         return view('frontView.pages.review_content');
     }
 
@@ -91,7 +92,6 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-
         $singleprofile = Profile::where('users_id', $id)->first();
         return view('frontView.pages.member_details')->with('singleprofile', $singleprofile);
 
