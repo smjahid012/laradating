@@ -169,11 +169,10 @@
                                 aria-haspopup="true" aria-expanded="false">Community</a>
                             <ul class="dropdown-menu">
                                 <li><a href="community.html">Community</a></li>
-                                <li><a href="{{ route('profile.member') }}">Members</a></li>
-
                                 {{-- Without this checking condition it will show error to get property id of non object.
                                     We are checking here user is logged in or not --}}
                                 @if (Auth::check() && $count = App\Profile::where('status', 1)->count()  )
+                                <li><a href="{{ route('profile.member') }}">Members</a></li>
                                 <li><a href="{{ route('profile.show', Auth::user()->id) }}">Members Details</a></li>
                                 @endif
 

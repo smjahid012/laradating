@@ -23,7 +23,7 @@
 
                                 <form method="post" action="{{ route('profile.add') }}">
                                     @csrf
-
+ 
                                         <div class="form-group">
                                             @if (auth()->user())
                                             <label for="email">Email Address </label>

@@ -26,13 +26,21 @@ class ProfileController extends Controller
         if($request->isMethod('post')){
             //profiles is table name
             $data = $request->all();
-            $profile = new profile;
-            $profile->users_id = Auth::user()->id;
+            //checking userdata if it is empty or not to determine which profile to show add or update
+            if (empty($data['users_id'])) {
+                $profile = new profile;
+                $profile->users_id = Auth::user()->id;
+            }else{
+                //when they update it's status will bo 0 & again for admin approval
+                $profile = Profile::where('users_id',$data['users_id'])->first();
+                $profile->status = 0;
+            }
+
             $profile->email = $data['email'];
             $profile->gender = $data['gender'];
             $profile->height = $data['height'];
             // $profile->country = $data['country'];
-        // $profile->language = $data['language'];
+            // $profile->language = $data['language'];
             $profile->dob = $data['dob'];
             $profile->mybio = $data['mybio'];
             $profile->myinterest = $data['myinterest'];
@@ -57,8 +65,19 @@ class ProfileController extends Controller
      */
     public function reviewprofile()
     {
+        //working
+        $users_id = Auth::User()->id;
+        $userStatus = Profile::select('status')->where('users_id',$users_id)->first();
+        if($userStatus->status == 1){
+            return redirect('/memberprofile');
+        }else{
+            return view('frontView.pages.review_content');
+        }
 
-        return view('frontView.pages.review_content');
+
+
+
+        //return view('frontView.pages.review_content');
     }
 
 
