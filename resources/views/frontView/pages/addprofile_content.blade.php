@@ -21,81 +21,69 @@
 
                                 <h4>Adding Profile After Registration</h4>
 
+                                @if ($errors->any())
+                                <div class='alert alert-danger'>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                @endif
+
                                 <form method="post" action="{{ route('profile.add') }}">
                                     @csrf
- 
-                                        <div class="form-group">
-                                            @if (auth()->user())
-                                            <label for="email">Email Address </label>
-                                            <input type="email" placeholder="Enter Email" name="email" value="{{ auth()->user()->email }}"  />
-                                            @else
-                                            <label for="email">Email Address </label>
-                                            <input type="email" placeholder="Enter Email" name="email" value="{{ old('email') }}"  />
-                                            @endif
+
+                                    <div class="form-group">
+                                        @if (auth()->user())
+                                        <label for="email">Email Address </label>
+                                        <input type="email" placeholder="Enter Email" name="email"
+                                            value="{{ auth()->user()->email }}" />
+                                        @else
+                                        <label for="email">Email Address </label>
+                                        <input type="email" placeholder="Enter Email" name="email"
+                                            value="{{ old('email') }}" />
+                                        @endif
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="gender">Select Gender</label>
+                                        <select class="form-control" name="gender" value="{{ old('gender') }}">
+                                          <option value="" >Choose</option>
+                                          <option value="M" {{ old('gender') == 'M' ?  'selected' : '' }} >Male</option>
+                                          <option value="F" {{ old('gender') == 'F' ?  'selected' : '' }} >Female</option>
+                                          <option value="O" {{ old('gender') == 'O' ?  'selected' : '' }} >Other</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="height">Select Height</label>
+                                        <select class="form-control" name="height" value="{{ old('height') }}" >
+                                          <option value="" >Choose</option>
+                                          <option value="1" {{ old('height') == '1' ?  'selected' : '' }}>5.7</option>
+                                          <option value="2" {{ old('height') == '2' ?  'selected' : '' }}>5.8</option>
+                                          <option value="3" {{ old('height') == '3' ?  'selected' : '' }}>5.9</option>
+                                          <option value="4" {{ old('height') == '4' ?  'selected' : '' }}>6.0</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="datepicker">
+                                            <input type='text' class="form-control datetimepicker4"
+                                                placeholder="Birthday" value="{{ old('dob') }}" name="dob" />
+                                            <span class="add-on"><i class="fa fa-calendar"
+                                                    aria-hidden="true"></i></span>
                                         </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Bio" name="mybio" value="{{ old('mybio') }}" />
+                                    </div>
 
 
-                                            {{-- <div class="form-group">
-                                                <input type="text" placeholder="Enter Gender" name="gender"  />
-                                            </div> --}}
-
-                                            <div class="form-group">
-                                                <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Choose Gender</label>
-                                                <select name="gender" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                                                  <option selected>Choose...</option>
-                                                  <option value="1">Male</option>
-                                                  <option value="2">Female</option>
-                                                  <option value="3">Three</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Choose Height</label>
-                                                <select name="height" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                                                  <option selected>Choose...</option>
-                                                  <option value="1">5.2</option>
-                                                  <option value="2">5.3</option>
-                                                  <option value="3">5.4</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <div class="datepicker">
-                                                    <input type='text' class="form-control datetimepicker4" placeholder="Birthday" name="dob"/>
-                                                    <span class="add-on"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <input type="text" placeholder="Bio" name="mybio"   />
-                                            </div>
-
-
-                                            <div class="form-group">
-                                                <input type="text" placeholder="Interst" name="myinterest"   />
-                                            </div>
-
-
-                                            {{-- <div class="form-group">
-                                                <input type="text" placeholder="height" name="height"  />
-                                            </div>
-
-
-
-                                            <div class="form-group">
-                                                <input type="text" placeholder="country" name="country"  />
-                                            </div>
-
-
-
-                                            <div class="form-group">
-                                                <input type="text" placeholder="Language" name="language"  />
-                                            </div>
-
-
-
-                                            --}}
-
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Interst" name="myinterest" value="{{ old('myinterest') }}"/>
+                                    </div>
 
                                     <button type="submit">Save Profile</button>
                                 </form>

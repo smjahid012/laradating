@@ -36,6 +36,17 @@ class ProfileController extends Controller
                 $profile->status = 0;
             }
 
+             //validating user
+        $data = request()->validate([
+
+            'email' => 'required|email',
+            'gender' => 'required',
+            'height' => 'required',
+            'dob' => 'required',
+            'mybio' => 'required',
+            'myinterest' => 'required',
+        ]);
+
             $profile->email = $data['email'];
             $profile->gender = $data['gender'];
             $profile->height = $data['height'];
