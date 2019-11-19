@@ -7,6 +7,7 @@
 
 @yield('userregister')
 @yield('addprofile')
+@yield('editprofile')
 @yield('profilereview')
 
 @yield('membercontent')

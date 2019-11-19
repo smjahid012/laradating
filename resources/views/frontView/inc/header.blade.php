@@ -168,33 +168,29 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                 aria-haspopup="true" aria-expanded="false">Community</a>
                             <ul class="dropdown-menu">
-                                <li><a href="community.html">Community</a></li>
-                                {{-- Without this checking condition it will show error to get property id of non object.
-                                    We are checking here user is logged in or not --}}
-                                @if (Auth::check() && $count = App\Profile::where('status', 1)->count()  )
-                                <li><a href="{{ route('profile.member') }}">Members</a></li>
-                                <li><a href="{{ route('profile.show', Auth::user()->id) }}">Members Details</a></li>
-                                @endif
-
                                 @guest
+                                <li><a href="community.html">Community</a></li>
                                 <li><a href="discussions.html">Discussions</a></li>
-                                @endguest
-
-
-
-                                {{-- @if (auth()->check() && auth()->user()->is('status'))
                                 <li><a href="forums.html">Forums</a></li>
-                                @else
-                                <p>Welcome, User</p>
-                                @endif
-                                --}}
-
-
-
                                 <li><a href="groups.html">Groups</a></li>
+                                @endguest
                                 <li><a href="matches.html">Matches</a></li>
                                 <li><a href="quick.html">Quick</a></li>
                                 <li><a href="search.html">Search</a></li>
+
+
+                                {{-- Checking User Logging Or Not:Without this cond. it will create to get property id of non object. --}}
+                                @if (Auth::check())
+                                <li><a href="{{ route('profile.add') }}">Add Profile</a></li>
+                                <li><a href="{{ route('profile.member') }}">Members</a></li>
+                                @endif
+
+                                @if (Auth::check() && $chekcingUserProfile = App\Profile::where(['users_id' => Auth::user()->id, 'status'=>1])->count() )
+                                    <li><a href="{{ route('profile.edit', Auth::user()->id) }}">Update Profile</a></li>
+                                    <li><a href="{{ route('profile.show', Auth::user()->id) }} " >My Details</a></li>
+                               {{-- @else
+                                <p>Welcome, User</p> --}}
+                                @endif
                             </ul>
                         </li>
                         <li class="dropdown submenu">
