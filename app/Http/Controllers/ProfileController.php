@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Country;
 use App\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
 {
@@ -41,7 +43,10 @@ class ProfileController extends Controller
             'email' => 'required|email',
             'gender' => 'required',
             'height' => 'required',
+            'countries' => 'required',
+            'languages' => 'required',
             'dob' => 'required',
+            'user_age' =>'required',
             'mybio' => 'required',
             'myinterest' => 'required',
         ]);
@@ -49,14 +54,15 @@ class ProfileController extends Controller
             $profile->email = $data['email'];
             $profile->gender = $data['gender'];
             $profile->height = $data['height'];
-            // $profile->country = $data['country'];
-            // $profile->language = $data['language'];
+            $profile->countries = $data['countries'];
+            $profile->languages = $data['languages'];
             $profile->dob = $data['dob'];
+            $profile->user_age = $data['user_age'];
             $profile->mybio = $data['mybio'];
             $profile->myinterest = $data['myinterest'];
             $profile->save();
 
-            // echo "<pre>";
+            //echo "<pre>";
             // print_r($data);
             // print_r(Auth::User());
             // print_r(Auth::user()->id);
@@ -65,7 +71,9 @@ class ProfileController extends Controller
             //Redirect Users To Review Page after saving form
             return redirect('/reviewprofile');
         }
-        return view('frontView.pages.addprofile_content');
+
+        $country = Country::get();
+        return view('frontView.pages.addprofile_content')->with('country', $country);
     }
 
     /**
@@ -133,9 +141,12 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
+        $country = Country::get();
         $editprofile = Profile::where('users_id', $id)->first();
-        return view('frontView.pages.editprofile')->with('editprofile', $editprofile);
+        //return view('frontView.pages.editprofile')->with('editprofile', $editprofile);
+        return view('frontView.pages.editprofile')->with(compact('editprofile','country'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -150,7 +161,10 @@ class ProfileController extends Controller
             'email' => 'required|email',
             'gender' => 'required',
             'height' => 'required',
+            'countries' => 'required',
+            'languages' => 'required',
             'dob' => 'required',
+            'user_age' =>'required',
             'mybio' => 'required',
             'myinterest' => 'required',
         ]);
@@ -159,20 +173,23 @@ class ProfileController extends Controller
         $profile->email = $data['email'];
         $profile->gender = $data['gender'];
         $profile->height = $data['height'];
+        $profile->countries = $data['countries'];
+        $profile->languages = $data['languages'];
         $profile->dob = $data['dob'];
+        $profile->user_age = $data['user_age'];
         $profile->mybio = $data['mybio'];
         $profile->myinterest = $data['myinterest'];
 
         $profile->save();
 
-         //echo "<pre>";
-         //print_r($data);
-         //print_r($profile);
+        //echo "<pre>";
+        //print_r($data);
+        //print_r($profile);
         // print_r(Auth::user()->id);
         // die;
         //return redirect('/updateprofile/{id}');
 
-        return redirect()->route('profile.show',Auth::user()->id );
+        return redirect()->route('profile.show', Auth::user()->id);
     }
 
 

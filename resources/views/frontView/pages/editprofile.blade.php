@@ -68,6 +68,30 @@
                                         </select>
                                     </div>
 
+
+                                    <div class="form-group">
+                                        <label for="height">Select Country</label>
+                                        <select class="form-control" name="countries"  value="{{ $editprofile->countries }}">
+                                          <option value="" >Choose</option>
+                                          @foreach ($country as $countryitem)
+                                            <option value="{{ $countryitem->country_name }}" {{ $editprofile->countries ==  $countryitem->country_name  ? 'selected' : '' }}> {{ $countryitem->country_name }}</option>
+                                          @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="height">Select Languages</label>
+                                        <select class="form-control" name="languages" value="{{ $editprofile->languages }}" multiple >
+                                          <option value="" >Choose</option>
+                                          <option value="English" {{ $editprofile->languages == 'English' ?  'selected' : '' }}>English</option>
+                                          <option value="Hindi" {{ $editprofile->languages == 'Hindi' ?  'selected' : '' }}>Hindi</option>
+                                          <option value="Bangla" {{ $editprofile->languages == 'Bangla' ?  'selected' : '' }}>Bangla</option>
+                                          <option value="Arabic" {{ $editprofile->languages == 'Arabic' ?  'selected' : '' }}>Arabic</option>
+                                          <option value="Tamil" {{ $editprofile->languages == 'Tamil' ?  'selected' : '' }}>Tamil</option>
+                                          <option value="Russian" {{ $editprofile->languages == 'Russian' ?  'selected' : '' }}>Russian</option>
+                                        </select>
+                                    </div>
+
                                     <div class="form-group">
                                         <div class="datepicker">
                                             <input type='text' class="form-control datetimepicker4"
@@ -76,6 +100,10 @@
                                                     aria-hidden="true"></i></span>
                                         </div>
                                     </div>
+
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Enter Age" name="user_age" value="{{ $editprofile->user_age }}" />
+                                        </div>
 
                                     <div class="form-group">
                                         <input type="text" placeholder="Bio" name="mybio" value="{{ $editprofile->mybio }}" />

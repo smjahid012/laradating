@@ -19,9 +19,10 @@ class CreateProfilesTable extends Migration
             $table->string('email')->unique();
             $table->string('gender');
             $table->string('height');
-            // $table->string('country');
-            // $table->string('language');
+            $table->string('countries');
+            $table->string('languages');
             $table->string('dob');
+            $table->string('user_age');
             $table->text('mybio');
             $table->text('myinterest');
             $table->tinyInteger('status');

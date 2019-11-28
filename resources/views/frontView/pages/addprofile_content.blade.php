@@ -67,6 +67,31 @@
                                         </select>
                                     </div>
 
+
+                                    <div class="form-group">
+                                        <label for="height">Select Country</label>
+                                        <select class="form-control" name="countries" value="{{ old('countries') }}" >
+                                          <option value="" >Choose</option>
+                                          @foreach ($country as $countryitem)
+                                            <option value="{{ $countryitem->country_name }}"> {{ $countryitem->country_name }}</option>
+                                          @endforeach
+                                        </select>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="height">Select Languages</label>
+                                        <select class="form-control" name="languages" value="{{ old('languages') }}" multiple >
+                                          <option value="" >Choose</option>
+                                          <option value="English" {{ old('languages') == 'English' ?  'selected' : '' }}>English</option>
+                                          <option value="Hindi" {{ old('languages') == 'Hindi' ?  'selected' : '' }}>Hindi</option>
+                                          <option value="Bangla" {{ old('languages') == 'Bangla' ?  'selected' : '' }}>Bangla</option>
+                                          <option value="Arabic" {{ old('languages') == 'Arabic' ?  'selected' : '' }}>Arabic</option>
+                                          <option value="Tamil" {{ old('languages') == 'Tamil' ?  'selected' : '' }}>Tamil</option>
+                                          <option value="Russian" {{ old('languages') == 'Russian' ?  'selected' : '' }}>Russian</option>
+                                        </select>
+                                    </div>
+
                                     <div class="form-group">
                                         <div class="datepicker">
                                             <input type='text' class="form-control datetimepicker4"
@@ -74,6 +99,11 @@
                                             <span class="add-on"><i class="fa fa-calendar"
                                                     aria-hidden="true"></i></span>
                                         </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                    <input type="text" placeholder="Enter Age" name="user_age" value="{{ old('user_age') }}" />
                                     </div>
 
                                     <div class="form-group">
